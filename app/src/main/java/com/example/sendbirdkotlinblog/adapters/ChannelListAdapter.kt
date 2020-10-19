@@ -1,9 +1,10 @@
-package com.example.sendbirdkotlinblog
+package com.example.sendbirdkotlinblog.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sendbirdkotlinblog.R
 import com.sendbird.android.AdminMessage
 import com.sendbird.android.FileMessage
 import com.sendbird.android.GroupChannel
@@ -31,7 +32,14 @@ class ChannelListAdapter(listener: OnChannelClickedListener) : RecyclerView.Adap
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChannelHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ChannelHolder(layoutInflater.inflate(R.layout.item_channel_chooser, parent, false))    }
+        return ChannelHolder(
+            layoutInflater.inflate(
+                R.layout.item_channel_chooser,
+                parent,
+                false
+            )
+        )
+    }
 
     override fun getItemCount() = channels.size
 

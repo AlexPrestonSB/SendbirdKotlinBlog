@@ -13,7 +13,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        SendBird.init("APP_ID_HERE", this)
+        SendBird.init("APP_ID", this)
 
         button_login_connect.setOnClickListener {
             connectToSendBird(edittext_login_user_id.text.toString(), edittext_login_nickname.text.toString())

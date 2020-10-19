@@ -1,12 +1,15 @@
 package com.example.sendbirdkotlinblog
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sendbirdkotlinblog.adapters.ChannelListAdapter
 import com.sendbird.android.GroupChannel
+import com.sendbird.android.SendBird
 import kotlinx.android.synthetic.main.activity_channel.*
 
 
@@ -22,7 +25,8 @@ class ChannelListActivity : AppCompatActivity(), ChannelListAdapter.OnChannelCli
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_channel)
 
-        adapter = ChannelListAdapter(this)
+        adapter =
+            ChannelListAdapter(this)
         recyclerView = recycler_group_channels
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
