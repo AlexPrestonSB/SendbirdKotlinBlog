@@ -38,10 +38,6 @@ class ChannelActivity : AppCompatActivity() {
         super.onResume()
         channelUrl = getChannelURl()
 
-        if (!SendBird.getConnectionState().equals(SendBird.ConnectionState.OPEN)) {
-            refresh()
-        }
-
         GroupChannel.getChannel(channelUrl,
             GroupChannelGetHandler { groupChannel, e ->
                 if (e != null) {
@@ -59,7 +55,7 @@ class ChannelActivity : AppCompatActivity() {
                 override fun onMessageReceived(
                     baseChannel: BaseChannel,
                     baseMessage: BaseMessage
-                ) {
+                ){
                     if (baseChannel.url == channelUrl) {
                         // Add new message to view
                         adapter.addFirst(baseMessage)
@@ -107,19 +103,6 @@ class ChannelActivity : AppCompatActivity() {
             })
     }
 
-    /**
-     * Function handles setting the group channel, or refreshing channel.
-     */
-    private fun refresh() {
-        groupChannel.refresh(GroupChannelRefreshHandler { e ->
-            if (e != null) {
-                // Error!
-                e.printStackTrace()
-                return@GroupChannelRefreshHandler
-            }
-            getMessages()
-        })
-    }
 
     /**
      * Function to get previous messages in channel
