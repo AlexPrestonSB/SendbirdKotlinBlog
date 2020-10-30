@@ -9,7 +9,6 @@ import com.example.sendbirdkotlinblog.adapters.MessageAdapter
 import com.sendbird.android.*
 import com.sendbird.android.BaseChannel.SendUserMessageHandler
 import com.sendbird.android.GroupChannel.GroupChannelGetHandler
-import com.sendbird.android.GroupChannel.GroupChannelRefreshHandler
 import com.sendbird.android.SendBird.ChannelHandler
 import kotlinx.android.synthetic.main.activity_chat.*
 
@@ -31,7 +30,7 @@ class ChannelActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
 
         setUpRecyclerView()
-        setButtonHandlers()
+        setButtonListeners()
     }
 
     override fun onResume() {
@@ -73,7 +72,7 @@ class ChannelActivity : AppCompatActivity() {
     /**
      * Function handles setting handlers for back/send button
      */
-    private fun setButtonHandlers() {
+    private fun setButtonListeners() {
         val back = button_gchat_back
         back.setOnClickListener {
             val intent = Intent(this, ChannelListActivity::class.java)
